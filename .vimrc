@@ -6,7 +6,10 @@ endif
 
 call plug#begin('~/.vim/bundle')
 
-" auto-save
+" autocomplete
+Plug 'valloric/youcompleteme'
+
+" autosave
 Plug 'vim-scripts/vim-auto-save'
 
 " languages
