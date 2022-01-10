@@ -4,6 +4,9 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
+" redefine Ag to avoid matching on filenames
+command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
+
 call plug#begin('~/.vim/bundle')
 
 " autocomplete
@@ -71,3 +74,18 @@ nnoremap <leader>e :Ex<cr>
 nnoremap <leader>g <C-w><C-w>
 
 nnoremap <silent> <leader> :nohlsearch<Bar>:echo<CR>
+
+let g:netrw_localrmdir='rm -r'
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
