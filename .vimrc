@@ -50,6 +50,7 @@ set tabstop=2
 set autoindent
 set smartindent
 set smarttab
+set colorcolumn=120
 
 " elm-vim overrides
 autocmd FileType elm setlocal softtabstop=4 shiftwidth=4
