@@ -16,6 +16,10 @@ let g:coc_global_extensions = [
   \ ]
 " Plug 'valloric/youcompleteme'
 
+" commenting
+Plug 'preservim/nerdcommenter'
+filetype plugin on
+
 " autosave
 Plug 'vim-scripts/vim-auto-save'
 
@@ -30,6 +34,7 @@ Plug 'mustache/vim-mustache-handlebars'
 Plug 'jparise/vim-graphql'
 Plug 'elmcast/elm-vim'
 Plug 'elixir-editors/vim-elixir'
+Plug 'rust-lang/rust.vim'
 
 " fzf
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -52,9 +57,12 @@ set smartindent
 set smarttab
 set colorcolumn=120
 
-" elm-vim overrides
+" elm-vim settings
 autocmd FileType elm setlocal softtabstop=4 shiftwidth=4
 let g:elm_setup_keybindings = 0
+
+" nerdcommenter settings
+let g:NERDSpaceDelims = 1
 
 set number
 set ic
